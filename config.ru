@@ -1,8 +1,11 @@
+
 # Load path and gems/bundler
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__))
-
 require "bundler"
 Bundler.require
+
+require 'dotenv'
+Dotenv.load
 
 # Local config
 require "find"
@@ -15,4 +18,7 @@ end
 
 # Load app
 require "still_leaf"
+require "haml"
+
+
 run StillLeaf

@@ -1,0 +1,34 @@
+%h1.nav
+  Instagram API nav
+.content
+  %ol
+    %li
+      %a{:href => "/user_recent_media"} User Recent Media
+      Calls user_recent_media - Get a list of a user's most recent media
+    %li
+      %a{:href => "/user_media_feed"} User Media Feed
+      Calls user_media_feed - Get the currently authenticated user's media feed uses pagination
+    %li
+      %a{:href => "/location_recent_media"} Location Recent Media
+      Calls location_recent_media - Get a list of recent media at a given location, in this case, the Instagram office
+    %li
+      %a{:href => "/media_search"} Media Search
+      Calls media_search - Get a list of media close to a given latitude and longitude
+    %li
+      %a{:href => "/media_popular"} Popular Media
+      Calls media_popular - Get a list of the overall most popular media items
+    %li
+      %a{:href => "/user_search"} User Search
+      Calls user_search - Search for users on instagram, by name or username
+    %li
+      %a{:href => "/location_search"} Location Search
+      Calls location_search - Search for a location by lat/lng
+    %li
+      %a{:href => "/location_search_4square"} Location Search - 4Square
+      Calls location_search - Search for a location by Fousquare ID (v2)
+    %li
+      %a{:href => "/tags"}> Tags
+      Search for tags, view tag info and get media by tag
+    %li
+      %a{:href => "/limits"}> View Rate Limit and Remaining API calls
+      View remaining and ratelimit info.

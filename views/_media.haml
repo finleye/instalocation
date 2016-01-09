@@ -1,0 +1,8 @@
+-media.each do |media_item|
+  %div{:style => "float:left;"}
+    %img{:src => "#{media_item.images.thumbnail.url}"}
+      %br/
+      %a{:href => "/media_like/#{media_item.id}"} like
+      %a{:href => "/media_unlike/#{media_item.id}"} un-like
+      = succeed "#{media_item.likes[:count]} likes" do
+        %br/
