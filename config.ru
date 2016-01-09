@@ -1,13 +1,15 @@
 
 # Load path and gems/bundler
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__))
-require "bundler"
+require 'bundler'
 Bundler.require
 
 if ENV["RACK_ENV"] != "production"
+  require 'pry'
   require 'dotenv'
   Dotenv.load
 end
+
 
 # Local config
 require "find"
