@@ -1,4 +1,3 @@
-require 'Haml'
 require "sinatra"
 require "instagram"
 require 'pry'

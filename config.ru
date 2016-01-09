@@ -22,5 +22,4 @@ end
 require "still_leaf"
 require "haml"
 
-
 run StillLeaf
