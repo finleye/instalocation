@@ -14,5 +14,5 @@ require "find"
 end
 
 # Load app
-require "insta_location"
-run InstaLocation
+require "still_leaf"
+run StillLeaf

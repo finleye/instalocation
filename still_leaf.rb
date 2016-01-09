@@ -1,4 +1,4 @@
-class InstaLocation < Sinatra::Base
+class StillLeaf < Sinatra::Base
 
   set public_folder: "public", static: true
 
