@@ -1,6 +1,5 @@
 require "sinatra"
 require "instagram"
-require 'pry'
 require 'sinatra/partial'
 
 class StillLeaf < Sinatra::Base
