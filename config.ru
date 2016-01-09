@@ -4,8 +4,10 @@ $LOAD_PATH << File.expand_path(File.dirname(__FILE__))
 require "bundler"
 Bundler.require
 
-require 'dotenv'
-Dotenv.load
+if ENV["RACK_ENV"] != "production"
+  require 'dotenv'
+  Dotenv.load
+end
 
 # Local config
 require "find"
