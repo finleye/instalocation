@@ -1,11 +1,13 @@
+require 'rack-flash'
 
 class StillLeaf < Sinatra::Base
   register Sinatra::Partial
   enable :partial_underscores
   enable :sessions
+  use Rack::Flash, sweep: true
 
   attr_accessor :insta_client
-  set public_folder: 'public', static: true
+  set public_folder: 'public'
 
   before do
     if request.path_info == '/' ||
@@ -23,6 +25,7 @@ class StillLeaf < Sinatra::Base
 
   get '/logout' do
     session.clear
+    flash[:info] = "You have been logged out."
     redirect '/'
   end
 
@@ -33,7 +36,13 @@ class StillLeaf < Sinatra::Base
 
   get '/oauth/callback' do
     response = Instagram.get_access_token(params[:code], redirect_uri: ENV['INSTAGRAM_CALLBACK_URL'])
-    session[:ig_access_token] = response.access_token
+    if response.access_token
+      session[:ig_access_token] = response.access_token
+      flash[:success] = "You've logged in as @#{insta_client.user.username}."
+    else
+      flash[:alert] = "Something went wrong."
+    end
+
     redirect '/user_recent_media'
   end
 
@@ -64,12 +73,19 @@ class StillLeaf < Sinatra::Base
   end
 
   get "/media_search" do
+
     #@media = insta_client.media_search("48.8567", "2.3508", distance: 5000)
-    @lng = params[:lng]
-    @lat = params[:lat]
-    if !@lng.nil? && !@lat.nil?
-      @media = insta_client.media_search(@lng, @lat, distance: 5000)
+    if params[:lng] && params[:lat]
+      @loc = [params[:lng], params[:lat]]
+    elsif params[:query]
+      @query = params[:query]
+      opts = {address: @query}
+      api = GmapsGeocoding::Api.new(opts)
+      data = api.location
+      @loc = api.finest_latlng(data['results']) if data.include?('status') && data['status'].eql?('OK')
     end
+
+    @media = insta_client.media_search(@loc[1], @loc[0], distance: 5000) if @loc
 
     haml :media_search
   end

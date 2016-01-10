@@ -1,0 +1,25 @@
+-flash_headers = { info: "Hey", alert: "Oops", success: "Yay!", warning: "Watch out" }
+-flash_headers.each do |type, header|
+  -if message = flash[type]
+    .row
+      .small-6.small-centered.columns
+        .callout.alert-box{class: "#{type.to_s}", "data-alert" => ""}
+          %strong=header
+          ="- #{message}"
+          %a.close-button{:href => "#"} ×
+        -#.callout.alert-box.info{"data-alert" => ""}
+          -#%strong Oops
+          -#\- The most dreadful word in nuclear physics.
+          -#%a.close-button{:href => "#"} ×
+        -#.callout.alert-box.alert{"data-alert" => ""}
+          -#%strong Error
+          -#\- You are the error.
+          -#%a.close-button{:href => "#"} ×
+        -#.callout.alert-box.success{"data-alert" => ""}
+          -#%strong Yay!
+          -#\- You accomplished a simple task!
+          -#%a.close-button{:href => "#"} ×
+        -#.callout.alert-box.warning{"data-alert" => ""}
+          -#%strong Caution
+          -#\- A word I don't understand.
+          -#%a.close-button{:href => "#"} ×

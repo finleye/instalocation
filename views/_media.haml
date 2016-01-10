@@ -1,8 +1,10 @@
--media.each do |media_item|
-  %div{:style => "float:left;"}
-    %img{:src => "#{media_item.images.thumbnail.url}"}
-      %br/
-      %a{:href => "/media_like/#{media_item.id}"} like
-      %a{:href => "/media_unlike/#{media_item.id}"} un-like
-      = succeed "#{media_item.likes[:count]} likes" do
-        %br/
+-media.each_slice(3) do |media_group|
+  .row
+    -media_group.each do |media_item|
+      .large-4.columns
+        %img{:src => "#{media_item.images.standard_resolution.url}"}
+          %br/
+          %a{:href => "/media_like/#{media_item.id}"} like
+          %a{:href => "/media_unlike/#{media_item.id}"} un-like
+          = succeed "#{media_item.likes[:count]} likes" do
+            %br/

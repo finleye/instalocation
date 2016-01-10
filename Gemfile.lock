@@ -22,6 +22,8 @@ GEM
       tzinfo (~> 1.1)
     builder (3.2.2)
     coderay (1.1.0)
+    domain_name (0.5.19)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
@@ -31,9 +33,16 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.2)
       faraday (>= 0.7.4, < 0.10)
+    gmaps_geocoding (1.2.2)
+      oj (>= 2.12.13)
+      oj_mimic_json
+      ox (>= 2.2.1)
+      rest-client (~> 1.8)
     haml (4.0.6)
       tilt
     hashie (3.4.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     instagram (1.1.6)
       faraday (>= 0.7, < 0.10)
@@ -44,17 +53,24 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     method_source (0.8.2)
+    mime-types (1.25.1)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
     multipart-post (2.0.0)
+    netrc (0.10.3)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
+    oj (2.14.3)
+    oj_mimic_json (1.0.1)
+    ox (2.2.3)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -73,6 +89,10 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -85,16 +105,21 @@ GEM
     tilt (2.0.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   dotenv-rails
+  gmaps_geocoding
   haml
   instagram
   minitest (~> 5.2)
   pry
+  rack-flash3
   rack-test (~> 0.6)
   rake (~> 10.0)
   sinatra (~> 1.4)

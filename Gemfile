@@ -6,6 +6,8 @@ gem "sinatra", "~> 1.4"
 gem "haml"
 gem "instagram"
 gem "sinatra-partial"
+gem 'rack-flash3'
+gem 'gmaps_geocoding'
 
 group :development do
   gem "rake", "~> 10.0"

@@ -1,19 +1,27 @@
 .row
   %h2
-    -if @media
+    -if @query
+      =@query
+    -elsif @media && @media.count > 0
       =@media.first.location.name
     -else
       Search for location
 
-.row.callout.centered
-  %form{action: "/media_search", method: "get"}
-    Longitude:
-    %input{name: "lng", type: "text", placeholder: "48.8567", value: @lng}
-    %br
-    Latitude:
-    %input{name: "lat", type: "text", placeholder: "2.3508", value: @lat}
-    %br
-    %input{type: "submit", value: "Submit"}
+.row
+  .medium-12.large-12.columns
+    %form{action: "/media_search", method: "get"}
+      .row
+        .small-12.columns
+          %label
+            Location
+            %input{name: "query", type: "text", placeholder: "Paris, France", value: @query}/
+      .row.column
+        %button.button.hollow.expanded{type: "submit"} Submit
+
 -if @media
-  .row
+  -if @media.count > 0
     =partial :media, locals: { media: @media }
+  -else
+    .row
+      .large-12.text-center
+        %h3 Sorry, we couldn't find any grams from that location.
