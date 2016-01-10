@@ -4,7 +4,7 @@ $LOAD_PATH << File.expand_path(File.dirname(__FILE__))
 require 'bundler'
 Bundler.require
 
-if ENV["RACK_ENV"] != "production"
+if ENV['RACK_ENV'] != 'production'
   require 'pry'
   require 'dotenv'
   Dotenv.load
@@ -12,7 +12,7 @@ end
 
 
 # Local config
-require "find"
+require 'find'
 
 %w{config/initializers lib}.each do |load_path|
   Find.find(load_path) { |f|
@@ -21,7 +21,10 @@ require "find"
 end
 
 # Load app
-require "still_leaf"
-require "haml"
+require 'still_leaf'
+require 'haml'
+require 'sinatra'
+require 'instagram'
+require 'sinatra/partial'
 
 run StillLeaf

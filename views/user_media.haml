@@ -1,2 +1,3 @@
-%h2="#{@user.username}'s recent media"
-=partial :media, locals: { media: @recent_media }
+.row
+  %h2="#{@user.username}'s recent media"
+  =partial :media, locals: { media: @recent_media }

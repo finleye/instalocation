@@ -1,0 +1,19 @@
+.row
+  %h2
+    -if @media
+      =@media.first.location.name
+    -else
+      Search for location
+
+.row.callout.centered
+  %form{action: "/media_search", method: "get"}
+    Longitude:
+    %input{name: "lng", type: "text", placeholder: "48.8567", value: @lng}
+    %br
+    Latitude:
+    %input{name: "lat", type: "text", placeholder: "2.3508", value: @lat}
+    %br
+    %input{type: "submit", value: "Submit"}
+-if @media
+  .row
+    =partial :media, locals: { media: @media }

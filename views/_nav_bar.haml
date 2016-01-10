@@ -1,0 +1,17 @@
+.top-bar
+  .top-bar-left
+    %ul.menu
+      %li.menu-text Still Leaf
+      -if session[:ig_access_token]
+        %li
+          %a{:href => "/user_recent_media"} Recent Post
+        %li
+          %a{:href => "/media_search"} Location Search
+  .top-bar-right
+    %ul.menu
+      -if session[:ig_access_token]
+        %li
+          %a{:href => "/logout"} Logout
+      -else
+        %li
+          %a{:href => "/oauth/connect"} Login with Instagram
