@@ -9,6 +9,8 @@ Live demo: https://still-leaf.herokuapp.com
 
 Clone repo and run `bundle`. You'll need a `.env` file in the root directory with Instagram API creds (including callback url), and a Google Maps Geocodder API key.
 
+    $ cp .env.sample .env
+
 ## Usage
 
 Start with:
