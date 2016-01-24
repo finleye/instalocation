@@ -4,11 +4,14 @@
       %li.menu-text Still Leaf
       -if session[:ig_access_token]
         %li
-          %a{:href => "/user_recent_media"} Recent Post
+          %a{:href => "/media/user"} Recent Post
         %li
-          %a{:href => "/media_search"} Location Search
+          %a{:href => "/media/search"} Location Search
   .top-bar-right
     %ul.menu
+      -if current_user
+        %li
+          %img.avatar{src: current_user.profile_picture}
       -if session[:ig_access_token]
         %li
           %a{:href => "/logout"} Logout

@@ -14,17 +14,14 @@ end
 # Local config
 require 'find'
 
-%w{config/initializers lib}.each do |load_path|
+%w{config/initializers lib helpers controllers}.each do |load_path|
   Find.find(load_path) { |f|
     require f unless f.match(/\/\..+$/) || File.directory?(f)
   }
 end
 
-# Load app
-require 'still_leaf'
-require 'haml'
-require 'sinatra'
-require 'instagram'
-require 'sinatra/partial'
+#run StillLeaf
+map('/media') { run MediaController }
+map('/oauth') { run OauthController }
+map('/') {run StaticPagesController }
 
-run StillLeaf
